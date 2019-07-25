@@ -1,0 +1,48 @@
+
+version: '3'
+services:
+  web:
+    build: site
+    container_name: apache-oauth_sdk
+    ports :
+     - 127.0.0.1:8098:80
+    volumes:
+     - ./www:/var/www/html/
+     - ./server/000-default.conf:/etc/apache2/sites-available/000-default.conf
+     - ./server/apache2.conf:/etc/apache2/apache2.conf
+     - ./server/php.ini:/usr/local/etc/php/php.ini
+    depends_on:
+     - database
+
+  database:
+    image: mysql:5.7
+    container_name: mysql-oauth_sdk
+    environment:
+      MYSQL_DATABASE: oauth_sdk_db
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: root
+      MYSQL_PASSWORD: password
+# volumes permet la persistance des données
+# sauvegarde toutes nos tables
+    volumes:
+      - ./db_data:/var/lib/mysql
+    restart: always
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin-oauth_sdk
+    depends_on:
+      - database
+    ports:
+      - 127.0.0.1:8097:80
+# autorise la connection via phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+
+  auth-server:
+    image: php:apache
+    volumes:
+      - ./auth-server:/var/www/html
+    working_dir: /var/www/html
+    ports:
+      - 127.0.0.1:8099:80
