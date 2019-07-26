@@ -31,7 +31,7 @@ class Routing{
 
 
 
-	public static function getSlug($c=null, $a=null){
+	public static function getSlug($c=null, $a=null, $get=[]){
 
 		$routes = yaml_parse_file(self::$routeFile);
 
@@ -41,6 +41,12 @@ class Routing{
 				$cAnda["controller"] == $c && 
 				$cAnda["action"] == $a)
 			{
+			    if (!empty($get)) {
+			        $slug .= "?";
+                    foreach($get as $key => $value) {
+                        $slug .= "$key=$value&";
+                    }
+                }
 				return $slug;
 			}
 		}

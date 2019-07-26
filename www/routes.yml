@@ -26,39 +26,10 @@
   controller: Users
   action: add
 
-"/facebook_login":
-  controller: Facebook
-  action: loginFacebook
+"/OAuth_login":
+  controller: Provider
+  action: login
 
-"/facebook_callback":
-  controller: Facebook
-  action: callbackFacebook
-
-"/facebook_user":
-  controller: Facebook
-  action: getUsersInfo
-
-"/heroku_login":
-  controller: Heroku
-  action: loginHeroku
-
-"/heroku_callback":
-  controller: Heroku
-  action: callbackHeroku
-
-"/heroku_user":
-  controller: Heroku
-  action: getUsersInfo
-
-"/github__login":
-  controller: Github
-  action: loginGithub
-
-"/github_callback":
-  controller: Github
-  action: callbackGithub
-
-"/github__user":
-  controller: Github
-  action: getUsersInfo
-
+"/OAuth_callback":
+  controller: Provider
+  action: callback
