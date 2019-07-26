@@ -72,6 +72,9 @@ class GithubProvider extends Provider
 
     public function login(): void
     {
-        // TODO: Implement login() method.
+        $state = 'stateisok';
+        $githubUrl = $this->getAuthorizationUrl();
+        $githubUrl .= "?response_type=code&scope=user&client_id=$this->id&redirect_uri=$this->callback&state=$state";
+        header('Location:'.$githubUrl);
     }
 }

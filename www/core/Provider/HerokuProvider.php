@@ -71,6 +71,9 @@ class HerokuProvider extends Provider
 
     public function login(): void
     {
-        // TODO: Implement login() method.
+        $state = 'stateisok';
+        $herokuUrl = $this->getAuthorizationUrl();
+        $herokuUrl .= "?response_type=code&client_id=$this->id&scope=identity&state=$state";
+        header('Location:'.$herokuUrl);
     }
 }
