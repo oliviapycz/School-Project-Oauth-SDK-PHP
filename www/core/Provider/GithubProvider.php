@@ -43,7 +43,7 @@ class GithubProvider extends Provider
             echo $$infoUrl;
         }
         $output = json_decode($output);
-
+        
         $_SESSION['github']['name'] = urldecode($output->login);
         $_SESSION['github']['email'] = urldecode($output->email);
         $_SESSION['github']['img_url'] = urldecode($output->avatar_url);
@@ -67,7 +67,7 @@ class GithubProvider extends Provider
         $parameters = explode('=',$output);
         $access_token = substr($parameters[1], 0, -6);
 
-        $_SESSION['github_access_token'] = $access_token;
+        $_SESSION['access_token'] = $access_token;
     }
 
     public function login(): void

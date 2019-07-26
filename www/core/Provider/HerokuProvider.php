@@ -66,7 +66,7 @@ class HerokuProvider extends Provider
         }
         $output = json_decode($output);
 
-        $_SESSION['heroku_access_token'] = $output;
+        $_SESSION['access_token'] = urldecode($output->access_token);
     }
 
     public function login(): void

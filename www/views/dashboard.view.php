@@ -1,7 +1,7 @@
 <?php
 
-if(isset($_SESSION['facebook_access_token']) &&
-  !empty($_SESSION['facebook_access_token']) && 
+if(isset($_SESSION['access_token']) &&
+  !empty($_SESSION['access_token']) && 
   isset($_SESSION['facebook']) &&
   !empty($_SESSION['facebook']) ) : ?>
 <div class="card card-register mx-auto mt-5">
@@ -13,8 +13,8 @@ if(isset($_SESSION['facebook_access_token']) &&
   </div>
 </div>
 
-<?php elseif(isset($_SESSION['heroku_access_token']) &&
-            !empty($_SESSION['heroku_access_token']) &&
+<?php elseif(isset($_SESSION['access_token']) &&
+            !empty($_SESSION['access_token']) &&
             isset($_SESSION['heroku']) && 
             !empty($_SESSION['heroku'])) :?>
 <div class="card card-register mx-auto mt-5">
@@ -27,8 +27,8 @@ if(isset($_SESSION['facebook_access_token']) &&
   </div>
 </div>
 
-<?php elseif(isset($_SESSION['github_access_token']) &&
-            !empty($_SESSION['github_access_token']) && 
+<?php elseif(isset($_SESSION['access_token']) &&
+            !empty($_SESSION['access_token']) && 
             isset($_SESSION['github']) &&
             !empty($_SESSION['github'])) :?>
 <div class="card card-register mx-auto mt-5">
